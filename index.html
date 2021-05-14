@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div id="container">
+        <div id="display">
+            <p id="displayText"></p>
+        </div>
+        <div id="buttonContainer">
+            <div id="topButtons">
+                <button class="otherButtons" onclick="newStart()">AC</button>   
+                <button class="otherButtons" onclick="main('/')">/</button>   
+                <button class="otherButtons" onclick="main('*')">X</button> 
+                <button class="otherButtons" onclick="backSpace()"><img src="backspace.png" style="width: 30px;"></button> 
+            </div>
+            <div id="bottomButtons">
+            <div id="numberContainer">
+            <button class="numberButton" onclick="display('9')">9</button>   
+            <button class="numberButton" onclick="display('8')">8</button>   
+            <button class="numberButton" onclick="display('7')">7</button>   
+            <button class="numberButton" onclick="display('6')">6</button>   
+            <button class="numberButton" onclick="display('5')">5</button>   
+            <button class="numberButton" onclick="display('4')">4</button>   
+            <button class="numberButton" onclick="display('3')">3</button>   
+            <button class="numberButton" onclick="display('2')">2</button>   
+            <button class="numberButton" onclick="display('1')">1</button>
+            <button class="otherButtons" onclick="display('.')">.</button>
+            <button class="numberButton" onclick="display('0')">0</button>      
+            <button class="otherButtons" onclick="main('%')">%</button>
+            </div>
+            <div id="rightButtons">
+            <button class="otherButtons" style="font-size: xx-large;" onclick="main('-')">-</button>   
+            <button class="otherButtons" style="font-size: xx-large;" onclick="main('+')">+</button>   
+            <button class="otherButtons" id="equalsButton" onclick="equals()">=</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <h1 id='signature'>Zamkamec</h1>
+    <script src="app.js"></script>
+</body>
+</html>
