@@ -3,45 +3,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" >
+    <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
-    <div id="container">
-        <div id="display">
-            <p id="displayText"></p>
-        </div>
-        <div id="buttonContainer">
-            <div id="topButtons">
-                <button class="otherButtons" onclick="newStart()">AC</button>   
-                <button class="otherButtons" onclick="main('/')">/</button>   
-                <button class="otherButtons" onclick="main('*')">X</button> 
-                <button class="otherButtons" onclick="backSpace()"><img src="backspace.png" style="width: 30px;"></button> 
-            </div>
-            <div id="bottomButtons">
-            <div id="numberContainer">
-            <button class="numberButton" onclick="display('9')">9</button>   
-            <button class="numberButton" onclick="display('8')">8</button>   
-            <button class="numberButton" onclick="display('7')">7</button>   
-            <button class="numberButton" onclick="display('6')">6</button>   
-            <button class="numberButton" onclick="display('5')">5</button>   
-            <button class="numberButton" onclick="display('4')">4</button>   
-            <button class="numberButton" onclick="display('3')">3</button>   
-            <button class="numberButton" onclick="display('2')">2</button>   
-            <button class="numberButton" onclick="display('1')">1</button>
-            <button class="otherButtons" onclick="display('.')">.</button>
-            <button class="numberButton" onclick="display('0')">0</button>      
-            <button class="otherButtons" onclick="main('%')">%</button>
-            </div>
-            <div id="rightButtons">
-            <button class="otherButtons" style="font-size: xx-large;" onclick="main('-')">-</button>   
-            <button class="otherButtons" style="font-size: xx-large;" onclick="main('+')">+</button>   
-            <button class="otherButtons" id="equalsButton" onclick="equals()">=</button>
-            </div>
-            </div>
-        </div>
+    <div class="calculator-main">
+        <div class="display" data-display></div>
+        
+        <button class="otherButtons" data-all-clear>AC</button>
+        <button class="otherButtons" data-delete>Del</button>
+        <button class="otherButtons" data-operation>%</button>
+        <button class="operator" data-operation>/</button>
+
+        <button data-number>7</button>
+        <button data-number>8</button>
+        <button data-number>9</button>
+        <button class="operator" data-operation>*</button>
+
+        <button data-number>4</button>
+        <button data-number>5</button>
+        <button data-number>6</button>
+        <button class="operator" data-operation>+</button>
+
+        <button data-number>1</button>
+        <button data-number>2</button>
+        <button data-number>3</button>
+        <button class="operator" data-operation>-</button>
+
+        <button class="otherButtons" data-number>00</button>
+        <button data-number>0</button>
+        <button class="otherButtons" data-number>.</button>
+        <button style="background-color: #ff3e39;" data-equals>=</button>
     </div>
     <h1 id='signature'>Zamkamec</h1>
-    <script src="app.js"></script>
 </body>
 </html>

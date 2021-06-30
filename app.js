@@ -2,42 +2,36 @@ let displayText = "";
 let a = undefined;
 let b = undefined;
 let operator = undefined;
+let isThereError = false;
 
-function main(opSymbol){
+// Long Numbers
+// Keyboard Support
+
+function main(operatorSymbol){
+    if(displayText === ""){
+        return
+    }
+
+    if(a !== undefined){
+        b = displayText;
+        a = operate(a, operator, b);
+        b = undefined;
+        operator  = undefined;
+        clearDisplay();
+        display(a);
+    }
+
+    operator = operatorSymbol;
     a = displayText;
-    operator = opSymbol;
-    displayText= '';
-}
-
-function add(a, b){
-    displayText= '';
-    display((+a + +b));
-}
-
-function subtract(a, b){
-    displayText= '';
-    display((a - b));
-}
-
-function multiply(a, b){
-    displayText= '';
-    display((a * b));
-}
-
-function divide(a, b){
-    displayText= '';
-    display((a / b));
-}
-
-function remainder(a,b){
-    displayText= '';
-    display((a % b));
+    displayText = '';
 }
 
 function equals(){
-    if(a !== undefined && operator !== undefined){
+    if(a !== undefined && operator !== undefined && displayText !== ""){
         b = displayText;
-        operate(a, operator, b);
+        clearDisplay();
+        console.log(operate(a, operator, b))
+        display(operate(a, operator, b));
         reset();
     }else{
         console.log("Error incomplete operation");
@@ -45,34 +39,33 @@ function equals(){
 }
 
 function operate(a, operator, b){
+    // return yerine result ve sonda decimal ve sayi uzunlu[u checkle ve biter burda gg wp amk
     if(operator === "+"){
-        add(a,b);
+        return(+a + +b);
     }else if(operator === "-"){
-        subtract(a,b);
+        return(a - b);
     }else if(operator === "*"){
-        multiply(a,b);
+        return(a * b);
     }else if(operator === "/"){
         if(b === "0"){
-            display('NOPE')
+            isThereError = true;
+            errorMsg("Cannot Divide By 0");
         }else {
-            divide(a,b);
+            return(a / b);
         }
     }else if(operator === "%"){
         if(b === "0"){
-            display('NOPE')
+            isThereError = true;
+            errorMsg("Cannot Divide By 0");
         }else {
-            remainder(a,b);
+            return(a % b);
         }
     }
 }
 
 function display(value){
-    if(displayText.includes(".") && value === '.'){
-        console.log('second dot not allowed');
+    if((displayText.includes(".") && value === '.') || displayText.length > 17 || isThereError === true){
         return;
-    }
-    if(displayText === ''){
-        clearDisplay();
     }
 
     if(displayText === "0" && value !== '.'){
@@ -82,17 +75,16 @@ function display(value){
 
     displayText += value;
 
-    if(displayText.includes(".")){
-        Math.round(displayText * 100) / 100
-    }
+    // if(displayText.includes(".")){
+    //     Math.round(displayText * 100) / 100
+    // }
 
-    if(displayText.length > 17){
-        console.log("Number Too Long");
-        displayText = ''
-        display("Too Long");
-    }else {
-        document.getElementById('displayText').textContent = displayText;
-    }
+    document.getElementById('displayText').textContent = displayText;
+
+}
+
+function errorMsg(errorText){
+    document.getElementById('displayText').textContent = errorText;
 }
 
 function backSpace(){
@@ -109,6 +101,7 @@ function reset(){
     a = undefined;
     b = undefined;
     operator  = undefined;
+    isThereError = false;
 }
 
 function newStart(){
